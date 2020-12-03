@@ -1,0 +1,242 @@
+html {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+	font-family: monospace;
+}
+
+body {
+	background: #ffffff;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 16px;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.playground {
+    width: 92%;
+}
+
+.deck {
+	/* width: 100%; */
+	background: #c2a4c2;
+	padding: 1rem;
+	border-radius: 4px;
+	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+    align-items: center;
+}
+/* 
+.row {
+    display: flex;
+    flex-direction: row;
+	justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+} */
+
+.card {
+    min-height: 6rem;
+    display: flex;
+	width: 17%;
+	margin: 0.2rem 0.2rem;
+	background: #493649;;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 5px 2px 20px 0 rgba(51, 42, 56, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+/* .deck .card {
+	height: 5rem;
+	width: 3rem;
+	margin: 0.2rem 0.2rem;
+	background: #493649;;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(51, 42, 56, 0.5);
+} */
+
+.deck .card.open {
+	transform: rotateY(0);
+	background: #02b3e4;
+	cursor: default;
+	animation-name: flipIn;
+	animation-duration: 1.2s;
+}
+
+.deck .card.show {
+	font-size: 33px;
+}
+
+.deck .card.match {
+	cursor: default;
+	background: #73f384;
+	font-size: 33px;
+	animation-name: rubberBand;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+
+.deck .card.unmatched {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+	background: #e2043b;
+}
+
+.deck .card.disabled {
+	pointer-events: none;
+	opacity: 0.9;
+}
+
+.timer {
+    display: inline-block;
+	margin: 0 1rem;
+}
+
+@keyframes flipIn {
+	from {
+		transform: perspective(50rem) rotate3d(0, 1, 0, 90deg);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+
+	40% {
+		transform: perspective(50rem) rotate3d(0, 1, 0, -20deg);
+		animation-timing-function: ease-in;
+	}
+
+	60% {
+		transform: perspective(50rem) rotate3d(0, 1, 0, 10deg);
+		opacity: 1;
+	}
+
+	80% {
+		transform: perspective(50rem) rotate3d(0, 1, 0, -5deg);
+	}
+
+	to {
+		transform: perspective(50rem);
+	}
+}
+
+@keyframes rubberBand {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, .95, 1);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+
+
+/* @media (max-width: 37px) {
+	.deck {
+		width: 100%;
+	}
+
+	.deck .card {
+		height: 6.7rem;
+		width: 4.7rem;
+	}
+}
+
+
+
+
+@media (min-width: 768px) {
+	.container {
+		font-size: 22px;
+	}
+
+	.deck {
+		width: 660px;
+		height: 680px;
+	}
+
+	.deck .card {
+		height: 125px;
+		width: 125px;
+	}
+
+	.popup {
+		width: 60%;
+	}
+} 
+*/
