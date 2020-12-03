@@ -12,46 +12,69 @@
         <header>
             <h1>Keresd a párját</h1>
         </header>
-        <main class="container">
-            <section class="info">
-                <p>Kattintson egy kártyára a kezdéshez</p>
-                <span class="timer">0 perc 0 mp</span>
-            </section>
-            <section class="playground">
-                <div class="deck">
-                    <span class="card" tabindex="1">
-                        <i class="fa fa-leaf"></i>
-                    </span>
-                    <span class="card" tabindex="2">
-                        <i class="fa fa-bicycle"></i>
-                    </span>
-                    <span class="card" tabindex="3">
-                        <i class="fa fa-anchor"></i>
-                    </span>
-                    <span class="card" tabindex="4">
-                        <i class="fa fa-bolt"></i>
-                    </span>
-                    <span class="card" tabindex="5">
-                        <i class="fa fa-cube"></i>
-                    </span>
-                    <span class="card" tabindex="6">
-                        <i class="fa fa-leaf"></i>
-                    </span>
-                    <span class="card" tabindex="7">
-                        <i class="fa fa-bicycle"></i>
-                    </span>
-                    <span class="card" tabindex="8">
-                        <i class="fa fa-anchor"></i>
-                    </span>
-                    <span class="card" tabindex="9">
-                        <i class="fa fa-bolt"></i>
-                    </span>
-                    <span class="card" tabindex="10">
-                        <i class="fa fa-cube"></i>
-                    </span>
-                </div>
-            </section>
-        </main>
+        <div class="container">
+            <main class="main">
+                <section class="info">
+                    <p>Kattintson egy kártyára a kezdéshez</p>
+                    <span class="timer ended">0 perc 0 mp</span>
+                </section>
+                <section class="playground">
+                    <div class="deck">
+                        <span class="card" tabindex="1">
+                            <i class="fa fa-leaf"></i>
+                        </span>
+                        <span class="card" tabindex="2">
+                            <i class="fa fa-bicycle"></i>
+                        </span>
+                        <span class="card" tabindex="3">
+                            <i class="fa fa-anchor"></i>
+                        </span>
+                        <span class="card" tabindex="4">
+                            <i class="fa fa-bolt"></i>
+                        </span>
+                        <span class="card" tabindex="5">
+                            <i class="fa fa-cube"></i>
+                        </span>
+                        <span class="card" tabindex="6">
+                            <i class="fa fa-leaf"></i>
+                        </span>
+                        <span class="card" tabindex="7">
+                            <i class="fa fa-bicycle"></i>
+                        </span>
+                        <span class="card" tabindex="8">
+                            <i class="fa fa-anchor"></i>
+                        </span>
+                        <span class="card" tabindex="9">
+                            <i class="fa fa-bolt"></i>
+                        </span>
+                        <span class="card" tabindex="10">
+                            <i class="fa fa-cube"></i>
+                        </span>
+                    </div>
+                </section>
+            </main>
+            <aside class="description">
+                <section>
+                    <h2>Játékszabályok</h2>
+                    <p>A játék célja mielőbb megtalálni az egyes kártyák párjait.
+                        Az első kártyára kattintás után indul a játék.
+                        Minden körben kettő kártyát lehet választani.
+                        Ha mindkét kártyán azonos szimbólum szerepel, akkor az így megtalált pár felfordítva marad.
+                        Ellenkező esetben kis idő elteltével visszafordulnak. <br><br>
+                        A játék addig tart, míg az összes párt sikerül megtalálni. <br>
+                        A megfejtéshez szükséges idő rövid kiemelése után a játék visszaáll a kiindulási állapotba, 
+                        a kártyák pedig összekeverésre kerülnek.
+                        Ezután új játék indítható az egyik lapra kattintással. <br><br>
+
+                        Megjegyzések: <br>
+                        A már megtalált párokhoz tartozó lapok a továbbiakban nem választhatók ki újra.
+                        Az egyes lapokon a TAB billentyű segítségével is végig lehet lépkedni, és az ENTER billenytű 
+                        lenyomásával ki lehet őket választani. <br><br>
+                        Jó szórakozást! 
+                    </p>
+                </section>
+            </aside>
+        </div>
     <script src="js/main.js"></script>
 </body>
 </html>

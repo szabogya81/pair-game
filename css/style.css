@@ -4,10 +4,10 @@ html {
 
 html,
 body {
-	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	width: 100%;
 }
 
 header {
@@ -26,14 +26,23 @@ body {
 
 .container {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
 }
 
+.main {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.description {
+	margin: 8%;
+}
+
 .info {
-    text-align: center;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .playground {
@@ -41,92 +50,68 @@ body {
 }
 
 .deck {
-	/* width: 100%; */
+    align-items: center;
 	background: #c2a4c2;
-	padding: 1rem;
 	border-radius: 4px;
 	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-    align-items: center;
+	padding: 1rem;
 }
-/* 
-.row {
-    display: flex;
-    flex-direction: row;
-	justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
-} */
 
 .card {
-    min-height: 6rem;
-    display: flex;
-	width: 17%;
-	margin: 0.2rem 0.2rem;
-	background: #493649;;
-	font-size: 0;
-	color: #ffffff;
-	border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 5px 2px 20px 0 rgba(51, 42, 56, 0.5);
     align-items: center;
+	background: #493649;;
+	border-radius: 5px;
+    box-shadow: 5px 2px 20px 0 rgba(51, 42, 56, 0.5);
+	color: #ffffff;
+    cursor: pointer;
+    display: flex;
+	font-size: 0;
     justify-content: center;
+	margin: 0.2rem 0.2rem;
+    min-height: 6rem;
+	width: 17%;
 }
 
-/* .deck .card {
-	height: 5rem;
-	width: 3rem;
-	margin: 0.2rem 0.2rem;
-	background: #493649;;
-	font-size: 0;
-	color: #ffffff;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 5px 2px 20px 0 rgba(51, 42, 56, 0.5);
-} */
-
-.deck .card.open {
-	transform: rotateY(0);
+.card.open {
+	animation-duration: 0.75s;
+	animation-name: flipCard;
+	backface-visibility: visible;
 	background: #02b3e4;
 	cursor: default;
-	animation-name: flipIn;
-	animation-duration: 1.2s;
+	transform: rotateY(0);
 }
 
-.deck .card.show {
+.card.show {
 	font-size: 33px;
 }
 
-.deck .card.match {
-	cursor: default;
+.card.match {
+	animation-duration: 0.75s;
+	animation-name: cardMatch;
+	backface-visibility: visible;
 	background: #73f384;
+	cursor: default;
 	font-size: 33px;
-	animation-name: rubberBand;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: .75s;
 }
 
-.deck .card.unmatched {
-	animation-name: pulse;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: .75s;
+.card.unmatch {
+	animation-duration: 0.75s;
+	animation-name: cardUnmatch;
+	backface-visibility: visible;
 	background: #e2043b;
 }
 
-.deck .card.disabled {
-	pointer-events: none;
+.card.disabled {
 	opacity: 0.9;
+	pointer-events: none;
+}
+.card.reset {
+	animation-duration: 0.75s;
+	animation-name: flipCard;
 }
 
 .timer {
@@ -134,21 +119,26 @@ body {
 	margin: 0 1rem;
 }
 
-@keyframes flipIn {
+.timer.ended {
+	animation-name: showResult;
+	animation-duration: 5s;
+}
+
+@keyframes flipCard {
 	from {
-		transform: perspective(50rem) rotate3d(0, 1, 0, 90deg);
 		animation-timing-function: ease-in;
 		opacity: 0;
+		transform: perspective(50rem) rotate3d(0, 1, 0, 90deg);
 	}
 
 	40% {
-		transform: perspective(50rem) rotate3d(0, 1, 0, -20deg);
 		animation-timing-function: ease-in;
+		transform: perspective(50rem) rotate3d(0, 1, 0, -20deg);
 	}
 
 	60% {
-		transform: perspective(50rem) rotate3d(0, 1, 0, 10deg);
 		opacity: 1;
+		transform: perspective(50rem) rotate3d(0, 1, 0, 10deg);
 	}
 
 	80% {
@@ -160,7 +150,7 @@ body {
 	}
 }
 
-@keyframes rubberBand {
+@keyframes cardMatch {
 	from {
 		transform: scale3d(1, 1, 1);
 	}
@@ -190,7 +180,7 @@ body {
 	}
 }
 
-@keyframes pulse {
+@keyframes cardUnmatch {
 	from {
 		transform: scale3d(1, 1, 1);
 	}
@@ -204,39 +194,38 @@ body {
 	}
 }
 
-
-
-/* @media (max-width: 37px) {
-	.deck {
-		width: 100%;
+@keyframes showResult {
+	from {
+		transform: scale(1, 1);
 	}
 
-	.deck .card {
-		height: 6.7rem;
-		width: 4.7rem;
+	80% {
+		transform: scale(1.5, 2);
+	}
+
+	to {
+		transform: scale(1, 1);
 	}
 }
 
-
-
-
 @media (min-width: 768px) {
 	.container {
-		font-size: 22px;
+		flex-direction: row;
 	}
 
+	.main {
+		width: 50%;
+	}
 	.deck {
-		width: 660px;
-		height: 680px;
+		min-height: 24rem;
 	}
 
-	.deck .card {
-		height: 125px;
-		width: 125px;
+	.card {
+		min-height: 10rem;
 	}
 
-	.popup {
-		width: 60%;
+	.description {
+		margin-top: 0;
+		width: 50%;
 	}
 } 
-*/
