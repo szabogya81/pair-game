@@ -1,3 +1,5 @@
+'use strict';
+
 const timer = {
     interval: 0,
     minutes: 0,
